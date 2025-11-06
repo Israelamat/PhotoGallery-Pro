@@ -7,6 +7,7 @@ require_once __DIR__ . '/../src/exceptions/QueryException.php';
 require_once __DIR__ . '/../src/database/QueryBuilder.class.php';
 require_once __DIR__ . '/../src/exceptions/AppException.php';
 require_once __DIR__ . '/../core/App.php';
+require_once __DIR__ . '/../src/repository/ImagenesRepository.php';
 
 $titulo = "";
 $errores = [];
@@ -18,8 +19,8 @@ try {
     //var_dump($config);
     App::bind('config', $config);
     $conexion = App::getConnection();
-    $queryBuilder = new QueryBuilder('imagenes','Imagen');
-    $imagenes = $queryBuilder->findAll();
+    $imagenesRepository = new ImagenesRepository();
+    $imagenes = $imagenesRepository->findAll();
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,9 +31,9 @@ try {
         $imagen->saveUploadFile(Imagen::RUTA_IMAGENES_SUBIDAS);
 
         $imagenGaleria = new Imagen($imagen->getFileName(),$descripcion, "1"); // inicializo 1 para respetar restricciones de foreing key y no se añada a la BD vacio
-        $queryBuilder->save($imagenGaleria);
+        $imagenesRepository->save($imagenGaleria);
         $mensaje = "Se ha guardado la imagen correctamente";
-        $imagenes = $queryBuilder->findAll();
+        $imagenes = $imagenesRepository->findAll();
     }
 
 } catch (FileException $fileException) {

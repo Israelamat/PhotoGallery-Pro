@@ -1,5 +1,8 @@
-<?php 
-class Asociados {
+<?php
+require_once __DIR__ . '/IEntity.interface.php';
+
+class Asociados implements IEntity
+{
 
     const RUTA_LOGOS_ASOCIADOS = '/public/images/asociados/';
 
@@ -24,55 +27,71 @@ class Asociados {
      * @return Asociados
      */
     public function __construct(
-        string $nombre, 
-        string $logo, 
-        string $descripcion)
-    {
+        string $nombre,
+        string $logo,
+        string $descripcion
+    ) {
         $this->nombre =  $nombre;
         $this->logo =  $logo;
-        $this->descripcion =  $descripcion;           
-    }   
+        $this->descripcion =  $descripcion;
+    }
 
     // -------------------- GETTERS --------------------
 
-    public function getId(): int { return $this->id; }
-    public function getNombre(): string { return $this->nombre; }
-    public function getLogo(): string { return $this->logo; }
-    public function getDescripcion(): string { return $this->descripcion; }
+    public function getId(): int
+    {
+        return $this->id;
+    }
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+    public function getLogo(): string
+    {
+        return $this->logo;
+    }
+    public function getDescripcion(): string
+    {
+        return $this->descripcion;
+    }
 
     // -------------------- SETTERS --------------------
-     /**
-      * @params string $nombre
-      * @return Asociados
-      */
-      public function setNombre(string $nombre): Asociados {
-          $this->nombre = $nombre;
-          return $this;
-      }
+    /**
+     * @params string $nombre
+     * @return Asociados
+     */
+    public function setNombre(string $nombre): Asociados
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
 
-      /**
-      * @params string $logo
-      * @return Asociados
-      */
-      public function setLogo(string $logo): Asociados {
-          $this->logo = $logo;
-          return $this;
-      }
+    /**
+     * @params string $logo
+     * @return Asociados
+     */
+    public function setLogo(string $logo): Asociados
+    {
+        $this->logo = $logo;
+        return $this;
+    }
 
-      /**
-      * @params string $descripcion
-      * @return Asociados
-      */
-      public function setDescripcion(string $descripcion): Asociados {
-          $this->descripcion = $descripcion;
-          return $this;
-      }
+    /**
+     * @params string $descripcion
+     * @return Asociados
+     */
+    public function setDescripcion(string $descripcion): Asociados
+    {
+        $this->descripcion = $descripcion;
+        return $this;
+    }
 
     // -------------------- toString --------------------
     /**
      * @return string
      */
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->descripcion;
     }
 
@@ -81,8 +100,22 @@ class Asociados {
     /**
      * @return string
      */
-    public function getUrl(): string {
+    public function getUrl(): string
+    {
         return self::RUTA_LOGOS_ASOCIADOS . $this->getLogo();
     }
 
+    //---------------------------Interface--------------------
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            //'id' => $this->getId(), // en el anterior insert no se le pasa el ID y si se le pasa ahora la BD recibe un null 
+            'nombre' => $this->getNombre(),
+            'logo' => $this->getLogo(),
+            'descripcion' => $this->getDescripcion()
+        ];
+    }
 }

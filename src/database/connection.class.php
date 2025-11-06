@@ -18,6 +18,8 @@ class Connection
                 $config['password'],
                 $config['options']
             );
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         } catch (PDOException $PDOException) {
             throw new AppException('No se ha podido crear la conexión a la base de datos');
         }

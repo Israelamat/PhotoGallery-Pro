@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../exceptions/QueryException.php';
 require_once __DIR__ . '/../entity/Imagen.class.php';
 require_once __DIR__ . '/../../core/App.php';
-class QueryBuilder
+abstract class QueryBuilder
 {
     /**
      * @var PDO
@@ -65,8 +65,8 @@ class QueryBuilder
             $statement = $this->connection->prepare($sql);
             $statement->execute($parametrers);
         } catch (PDOException $exception) {
-            throw new QueryException("Error al insertar en la base de datos.");
             //die("PDO: " . $exception->getMessage());
+            throw new QueryException("Error al insertar en la base de datos.");
         }
     }
 }
