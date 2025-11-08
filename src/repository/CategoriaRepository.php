@@ -1,0 +1,14 @@
+<?php
+require_once __DIR__ . '/../database/queryBuilder.class.php';
+
+class CategoriaRepository extends QueryBuilder
+{
+  /**
+   * @param string  table
+   * @param string classEntity
+   */
+  public function __construct(string $table = 'categoria', string $classEntity = 'Categoria')
+  {
+    parent::__construct($table, $classEntity);
+  }
+}

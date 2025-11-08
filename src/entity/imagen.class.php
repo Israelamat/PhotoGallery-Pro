@@ -20,7 +20,7 @@ class imagen implements IEntity{
      */
     private $descripcion;
     /**
-     * @var string
+     * @var int
      */
     private $categoria;
     /**
@@ -41,9 +41,9 @@ class imagen implements IEntity{
      * @return Imagen
      */
     public function __construct(
-        string $nombre = "",
-        string $descripcion = "",
-        string $categoria = "",
+        string $nombre = '',
+        string $descripcion = '',
+        int $categoria = 1,
         int $numVisualizaciones = 0,
         int $numLikes = 0,
         int $numDownloads = 0
@@ -61,7 +61,7 @@ class imagen implements IEntity{
     public function getId(): ?int { return $this->id; }
     public function getNombre(): string { return $this->nombre; }
     public function getDescripcion(): string { return $this->descripcion; }
-    public function getCategoria(): string { return $this->categoria; }
+    public function getCategoria(): int { return $this->categoria; }
     public function getNumVisualizaciones(): int { return $this->numVisualizaciones; }
     public function getNumLikes(): int { return $this->numLikes; }
     public function getNumDownloads(): int { return $this->numDownloads; }

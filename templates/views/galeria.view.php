@@ -52,6 +52,16 @@
         </div>
         <div class="form-group">
           <div class="col-xs-12">
+            <label class="label-control">Categoria</label>
+            <select class="form-control" name="categoria">
+              <?php foreach ($categorias as $categoria) : ?>
+                <option value="<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
             <label class="label-control">Titulo</label>
             <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $titulo ?> ">
             <label class="label-control">Descripción</label>
@@ -76,6 +86,7 @@
               <th scope="col">Visualizaciones</th>
               <th scope="col">Likes</th>
               <th scope="col">Descargas</th>
+              <th scope=”col”>Categoria</th>
             </tr>
           </thead>
           <tbody>
@@ -91,6 +102,7 @@
                 <td><?= $imagen->getNumVisualizaciones() ?></td>
                 <td><?= $imagen->getNumLikes() ?></td>
                 <td><?= $imagen->getNumDownloads() ?></td>
+                <td><?= $imagenesRepository->getCategoria($imagen)->getNombre() ?></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

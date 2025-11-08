@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/entity/asociados.class.php';
+require_once __DIR__ . '/../src/entity/asociado.class.php';
 require_once __DIR__ . '/../src/utils/File.class.php';
 require_once __DIR__ . '/../src/database/connection.class.php';
 require_once __DIR__ . '/../src/repository/AsociadosRepository.php';
@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $descripcion = trim(htmlspecialchars($_POST['descripcion']));
                 $tiposAceptados = ['image/jpeg', 'image/gif', 'image/png'];
                 $imagen = new File('imagen', $tiposAceptados);
-                $imagen->saveUploadFile(Asociados::RUTA_LOGOS_ASOCIADOS);
+                $imagen->saveUploadFile(Asociado::RUTA_LOGOS_ASOCIADOS);
 
                 $config = require __DIR__ . '/../app/config.php';
                 //var_dump($config);
                 App::bind('config', $config);
                 $conexion = App::getConnection();
-                $asociado = new Asociados($nombre, $imagen->getFileName(), $descripcion);
+                $asociado = new Asociado($nombre, $imagen->getFileName(), $descripcion);
 
                 $asociadosRepository = new AsociadosRepository();
                 $asociadosRepository->save($asociado);

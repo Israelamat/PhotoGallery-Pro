@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../src/entity/imagen.class.php';
-require_once __DIR__ . '/../src/entity/asociados.class.php';
+require_once __DIR__ . '/../src/entity/asociado.class.php';
 require_once __DIR__ . '/../src/utils/utils.class.php';
 
 $imagenesHome[] = new Imagen('1.jpg', 'Descripción imagen 1', 1, 456, 610, 130);
@@ -16,9 +16,9 @@ $imagenesHome[] = new Imagen('10.jpg', 'Descripción imagen 10', 1, 530, 710, 11
 $imagenesHome[] = new Imagen('11.jpg', 'Descripción imagen 11', 1, 550, 730, 125);
 $imagenesHome[] = new Imagen('12.jpg', 'Descripción imagen 12', 1, 560, 740, 135);
 
-$logoHome[] = new Asociados('Firts Partner Name', 'log1.jpg', 'Bonito logo');
-$logoHome[] = new Asociados('Second PartnerName', 'log2.jpg', 'Bonito logo');
-$logoHome[] = new Asociados('Third Partner Name', 'log3.jpg', 'Bonito logo');
+$logoHome[] = new Asociado('Firts Partner Name', 'log1.jpg', 'Bonito logo');
+$logoHome[] = new Asociado('Second PartnerName', 'log2.jpg', 'Bonito logo');
+$logoHome[] = new Asociado('Third Partner Name', 'log3.jpg', 'Bonito logo');
 
 $logoHome = utils::extraeElementosAleatorios($logoHome, 4);
 
