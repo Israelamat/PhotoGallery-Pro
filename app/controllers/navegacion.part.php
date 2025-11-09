@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/utils/utils.class.php';
+require_once __DIR__ . '/../../src/utils/utils.class.php';
 ?>
 <nav class="navbar navbar-fixed-top navbar-default">
   <div class="container">
@@ -17,22 +17,22 @@ require_once __DIR__ . '/../src/utils/utils.class.php';
     <div class="collapse navbar-collapse navbar-right" id="menu">
       <ul class="nav navbar-nav">
         <li class="<?php echo (utils::esOpcionMenuActiva('/index.php') || utils::esOpcionMenuActiva('/')) ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/index.php"><i class="fa fa-home sr-icons"></i> Home</a>
+          <a href="/"><i class="fa fa-home sr-icons"></i> Home</a>
         </li>
         <li class="<?php echo utils::esOpcionMenuActiva('/about.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/about.php"><i class="fa fa-bookmark sr-icons"></i> About</a>
+          <a href="/about"><i class="fa fa-bookmark sr-icons"></i> About</a>
         </li>
         <li class="<?php echo utils::esOpcionMenuActiva('/blog.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a>
+          <a href="/blog"><i class="fa fa-file-text sr-icons"></i> Blog</a>
         </li>
         <li class="<?php echo utils::esOpcionMenuActiva('/contact.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/contact.php"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
+          <a href="/contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
         </li>
         <li class="<?php echo utils::esOpcionMenuActiva('/galeria.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/galeria.php"><i class="fa fa-file-text sr-icons"></i> Galeria</a>
+          <a href="/galeria"><i class="fa fa-file-text sr-icons"></i> Galeria</a>
         </li>
         <li class="<?php echo utils::esOpcionMenuActiva('/asociados.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/templates/asociados.php"><i class="fa fa-bookmark sr-icons"></i> Asociados</a>
+          <a href="/asociados"><i class="fa fa-bookmark sr-icons"></i> Asociados</a>
         </li>
       </ul>
     </div>

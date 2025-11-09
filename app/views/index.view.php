@@ -1,8 +1,7 @@
-<?php require_once __DIR__ . '/../inicio.part.php'; ?>
-
+<?php require_once __DIR__ . '/../controllers/inicio.part.php'; ?>
 
 <!-- Navigation Bar -->
-<?php require_once __DIR__ . '/../navegacion.part.php';
+<?php require_once __DIR__ . '/../controllers/navegacion.part.php';
 ?>
 <!-- End of Navigation Bar -->
 
@@ -47,19 +46,19 @@
       $idCategoria = 1;
       shuffle($imagenesHome);
       $imagenesCategoria = array_slice($imagenesHome, 0, 4);
-      require __DIR__ . '/../imagenindex.part.php';
+      require __DIR__ . '/../controllers/imagenindex.part.php';
 
       // Segunda categoría
       $idCategoria = 2;
       shuffle($imagenesHome);
       $imagenesCategoria = array_slice($imagenesHome, 4, 4);
-      require __DIR__ . '/../imagenindex.part.php';
+      require __DIR__ . '/../controllers/imagenindex.part.php';
 
       // Tercera categoría
       $idCategoria = 3;
       shuffle($imagenesHome);
       $imagenesCategoria = array_slice($imagenesHome, 8, 4);
-      require __DIR__ . '/../imagenindex.part.php';
+      require __DIR__ . '/../controllers/imagenindex.part.php';
       ?>
 
       <!-- Newsletter form -->
@@ -78,10 +77,10 @@
       <!-- End of Newsletter form -->
 
       <!-- Box within partners name and logo -->
-      <?php require_once __DIR__  . '/../indexlogos.view.part.php';?>
+      <?php require_once __DIR__  . '/../controllers/indexlogos.view.part.php';?>
       <!-- End of Box within partners name and logo -->
 
     </div><!-- End of index box -->
 
     <!-- Footer -->
-    <?php require_once __DIR__ . '/../fin.part.php'; ?>
+    <?php require_once __DIR__ . '/../controllers/fin.part.php'; ?>

@@ -1,8 +1,8 @@
-<?php require_once __DIR__ . '/../inicio.part.php';?>
+<?php require_once __DIR__ . '/../controllers/inicio.part.php';?>
 
 
 <!-- Navigation Bar -->
-<?php require_once __DIR__ . '/../navegacion.part.php';?>
+<?php require_once __DIR__ . '/../controllers/navegacion.part.php';?>
 
 <!-- End of Navigation Bar -->
 
@@ -126,4 +126,4 @@
 <!-- End of Principal Content Start -->
 
    <!-- Footer -->
-   <?php require_once __DIR__ . '/../fin.part.php';?>
+   <?php require_once __DIR__ . '/../controllers/fin.part.php';?>

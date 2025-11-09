@@ -1,17 +1,17 @@
 <?php
-require_once __DIR__ . '/../src/exceptions/FileException.php';
-require_once __DIR__ . '/../src/utils/File.class.php';
-require_once __DIR__ . '/../src/entity/imagen.class.php';
-require_once __DIR__ . '/../src/entity/categoria.class.php';
-require_once __DIR__ . '/../src/entity/asociado.class.php';
-require_once __DIR__ . '/../src/database/Connection.class.php';
-require_once __DIR__ . '/../src/exceptions/QueryException.php';
-require_once __DIR__ . '/../src/database/QueryBuilder.class.php';
-require_once __DIR__ . '/../src/exceptions/AppException.php';
-require_once __DIR__ . '/../src/exceptions/CategoriaException.php';
-require_once __DIR__ . '/../core/App.php';
-require_once __DIR__ . '/../src/repository/ImagenesRepository.php';
-require_once __DIR__ . '/../src/repository/CategoriaRepository.php';
+require_once __DIR__ . '/../../src/exceptions/FileException.php';
+require_once __DIR__ . '/../../src/utils/File.class.php';
+require_once __DIR__ . '/../../src/entity/imagen.class.php';
+require_once __DIR__ . '/../../src/entity/categoria.class.php';
+require_once __DIR__ . '/../../src/database/Connection.class.php';
+require_once __DIR__ . '/../../src/exceptions/QueryException.php';
+require_once __DIR__ . '/../../src/exceptions/AppException.php';
+require_once __DIR__ . '/../../src/exceptions/CategoriaException.php';
+require_once __DIR__ . '/../../src/repository/ImagenesRepository.php';
+require_once __DIR__ . '/../../src/repository/CategoriaRepository.php';
+
+require_once __DIR__ . '/../../core/bootstrap.php';
+
 
 $titulo = "";
 $errores = [];
@@ -19,9 +19,6 @@ $descripcion = '';
 $mensaje = '';
 
 try {
-    $config = require __DIR__ . '/../app/config.php';
-    //var_dump($config);
-    App::bind('config', $config);
     $conexion = App::getConnection();
     $imagenesRepository = new ImagenesRepository();
     $imagenes = $imagenesRepository->findAll();
@@ -54,4 +51,4 @@ try {
     $errores[] = "No se ha seleccionado una categoría válida";
 }
 
-require_once 'views/galeria.view.php';
+require_once __DIR__ . '/../views/galeria.view.php';

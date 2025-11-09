@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../src/entity/asociado.class.php';
-require_once __DIR__ . '/../src/utils/File.class.php';
-require_once __DIR__ . '/../src/database/connection.class.php';
-require_once __DIR__ . '/../src/repository/AsociadosRepository.php';
+require_once __DIR__ . '/../../src/entity/asociado.class.php';
+require_once __DIR__ . '/../../src/utils/File.class.php';
+require_once __DIR__ . '/../../src/database/connection.class.php';
+require_once __DIR__ . '/../../src/repository/AsociadosRepository.php';
 
 $nombre = '';
 $descripcion = '';
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $imagen = new File('imagen', $tiposAceptados);
                 $imagen->saveUploadFile(Asociado::RUTA_LOGOS_ASOCIADOS);
 
-                $config = require __DIR__ . '/../app/config.php';
+                $config = require __DIR__ . '/../../app/config.php';
                 //var_dump($config);
                 App::bind('config', $config);
                 $conexion = App::getConnection();
@@ -44,4 +44,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } ?>
 
 
-<?php require_once __DIR__ . '/../templates/views/asociados.view.php';
+<?php require_once __DIR__ . '/../views/asociados.view.php';
