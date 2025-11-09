@@ -39,7 +39,7 @@ try {
         $categoria = ($_POST['categoria']);
         if (empty($categoria)) throw new CategoriaException;
         $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, (int) $categoria);
-        $imagenesRepository->save($imagenGaleria);
+        $imagenesRepository->guarda($imagenGaleria);
 
         $mensaje = "Se ha guardado la imagen correctamente";
         $imagenes = $imagenesRepository->findAll();

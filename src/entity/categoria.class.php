@@ -55,6 +55,7 @@ class Categoria implements IEntity
     public function toArray(): array
     {
         return [
+            'id' => $this->getId(),
             'nombre' => $this->getNombre(),
             'numImagenes' => $this->getNumImagenes()
         ];
