@@ -41,7 +41,7 @@ CREATE TABLE `asociados` (
 --
 
 CREATE TABLE `categoria` (
-  `ID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
