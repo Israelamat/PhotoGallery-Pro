@@ -1,9 +1,16 @@
 <?php
 class Router
 {
+  /**
+   * @var array
+   */
+  private $routes;
   private function __construct()
   {
-    $this->routes = [];
+    $this->routes = [
+      'GET' => [],
+      'POST' => []
+    ];
   }
   /**
    * @param sring $file
@@ -15,20 +22,25 @@ class Router
     require $file;
     return $router;
   }
-  private $routes;
-  /**
-   * @param array $routes
-   * @return void
-   */
-  public function define(array $routes): void
+
+  public function get(string $uri, string $controller): void
   {
-    $this->routes = $routes;
+    $this->routes['GET'][$uri] = $controller;
+  }
+  public function post(string $uri, string $controller): void
+  {
+    $this->routes['POST'][$uri] = $controller;
   }
 
-  public function direct(string $uri): string
+  public function redirect(string $path)
   {
-    if (array_key_exists($uri, $this->routes))
-      return $this->routes[$uri];
+    header('location: /' . $path);
+  }
+
+  public function direct(string $uri, string $method): string
+  {
+    if (array_key_exists($uri, $this->routes[$method]))
+      return $this->routes[$method][$uri];
     throw new NotFoundException("No se ha definido una ruta para la uri solicitada");
   }
 }

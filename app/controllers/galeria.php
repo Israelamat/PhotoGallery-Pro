@@ -11,44 +11,20 @@ require_once __DIR__ . '/../../src/repository/ImagenesRepository.php';
 require_once __DIR__ . '/../../src/repository/CategoriaRepository.php';
 
 require_once __DIR__ . '/../../core/bootstrap.php';
-
-
-$titulo = "";
 $errores = [];
-$descripcion = '';
-$mensaje = '';
-
+$titulo = "";
+$descripcion = "";
+$mensaje = "";
 try {
-    $conexion = App::getConnection();
-    $imagenesRepository = new ImagenesRepository();
-    $imagenes = $imagenesRepository->findAll();
+  $conexion = App::getConnection();
+  $imagenesRepository = new ImagenesRepository();
+  $categoriasRepository = new CategoriaRepository();
+  $imagenes = $imagenesRepository->findAll();
+  $categorias = $categoriasRepository->findAll();
 
-    $categoriaRepository = new CategoriaRepository();
-    $categorias = $categoriaRepository->findAll();
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $descripcion = trim(htmlspecialchars($_POST['descripcion']));
-        $tiposAceptados = ['image/jpeg', 'image/gif', 'image/png'];
-
-        $imagen = new File('imagen', $tiposAceptados); // El nombre del input del formulario
-        $imagen->saveUploadFile(Imagen::RUTA_IMAGENES_SUBIDAS);
-
-        $categoria = ($_POST['categoria']);
-        if (empty($categoria)) throw new CategoriaException;
-        $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, (int) $categoria);
-        $imagenesRepository->guarda($imagenGaleria);
-
-        $mensaje = "Se ha guardado la imagen correctamente";
-        $imagenes = $imagenesRepository->findAll();
-    }
-} catch (FileException $fileException) {
-    $errores[] = $fileException->getMessage();
 } catch (QueryException $queryException) {
-    $errores[] = $queryException->getMessage(); //Antes ponia aqui fileException 
+  $errores[] = $queryException->getMessage();  //filexception??
 } catch (AppException $appException) {
-    $errores[] = $appException->getMessage();
-} catch (CategoriaException) {
-    $errores[] = "No se ha seleccionado una categoría válida";
+  $errores[] = $appException->getMessage();
 }
-
 require_once __DIR__ . '/../views/galeria.view.php';
