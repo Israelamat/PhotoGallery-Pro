@@ -28,9 +28,9 @@ class Asociado implements IEntity
      * @return Asociado
      */
     public function __construct(
-        string $nombre,
-        string $logo,
-        string $descripcion
+        string $nombre = '',
+        string $logo = '',
+        string $descripcion = ''
     ) {
         $this->nombre =  $nombre;
         $this->logo =  $logo;

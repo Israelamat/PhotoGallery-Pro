@@ -1,7 +1,7 @@
-<?php require_once __DIR__ . '/../controllers/inicio.part.php';?>
+<?php require_once __DIR__ . '/inicio.part.php';?>
 
 <!-- Navigation Bar -->
-<?php require_once __DIR__ . '/../controllers/navegacion.part.php';?>
+<?php require_once __DIR__ . '/navegacion.part.php';?>
 
 <!-- End of Navigation Bar -->
 
@@ -120,7 +120,7 @@
       <!-- End of Pricing Tables -->
 
       <!-- Clients Feedback -->
-        <?php require_once __DIR__ . '/../controllers/imagencliente.part.php';?>
+        <?php require_once __DIR__ . '/imagencliente.part.php';?>
       <!-- End of Clients Feedback --> 
        
       </div>
@@ -129,4 +129,4 @@
 <!-- End of principal content -->
 
    <!-- Footer -->
-  <?php require_once __DIR__ . '/../controllers/fin.part.php';?>
+  <?php require_once __DIR__ . '/fin.part.php';?>

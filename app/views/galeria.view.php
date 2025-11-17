@@ -1,7 +1,7 @@
-<?php require_once __DIR__ . '/../controllers/inicio.part.php'; ?>
+<?php require_once __DIR__ . '/inicio.part.php'; ?>
 
 <!-- Navigation Bar -->
-<?php require_once __DIR__ . '/../controllers/navegacion.part.php'; ?>
+<?php require_once __DIR__ . '/navegacion.part.php'; ?>
 
 <!-- End of Navigation Bar -->
 
@@ -42,7 +42,7 @@
       <?php endif; ?>
       <!-- Formulario que permite subir una imagen con su descripción -->
       <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
-<form clas="form-horizontal" action="/galeria/nueva" method="post" enctype="multipart/form-data">
+      <form clas="form-horizontal" action="/galeria/nueva" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <div class="col-xs-12">
             <label class="label-control">Imagen</label>
@@ -101,7 +101,7 @@
                 <td><?= $imagen->getNumVisualizaciones() ?></td>
                 <td><?= $imagen->getNumLikes() ?></td>
                 <td><?= $imagen->getNumDownloads() ?></td>
-                <td><?= $imagenesRepository->getCategoria($imagen)->getNombre() ?></td>
+                <td><?= $imagen->getCategoria() ?></td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -112,4 +112,4 @@
 </div>
 
 <!-- footer -->
-<?php require_once __DIR__ . '/../controllers/fin.part.php'; ?>
+<?php require_once __DIR__ . '/fin.part.php'; ?>

@@ -133,7 +133,7 @@ abstract class QueryBuilder
         $this->getUpdates($parameters)
       );
       $statement = $this->connection->prepare($sql);
-      var_dump($parameters);
+      //var_dump($parameters);
       $statement->execute($parameters);
     } catch (PDOException $pdoException) {
       throw new QueryException("No se ha podido actualizar el elemento con id " . $parameters['id']);
