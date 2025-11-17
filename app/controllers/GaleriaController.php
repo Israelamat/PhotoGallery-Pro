@@ -15,7 +15,7 @@ use dwes\core\Response;
 
 class GaleriaController
 {
-  // Mostrar galería
+  
   public function index()
   {
     $imagenes = App::getRepository(ImagenesRepository::class)->findAll();
@@ -47,6 +47,8 @@ class GaleriaController
       /** @var ImagenesRepository $imagenesRepository */
       $imagenesRepository = App::getRepository(ImagenesRepository::class);
 
+      $categoriasRepo = App::getRepository(CategoriaRepository::class);
+      $categorias = $categoriasRepo->findAll(); // <-- Traemos todas las categorías
       $titulo = trim(htmlspecialchars($_POST['titulo']));
       $descripcion = trim(htmlspecialchars($_POST['descripcion']));
       $tiposAceptados = ['image/jpeg', 'image/gif', 'image/png'];
