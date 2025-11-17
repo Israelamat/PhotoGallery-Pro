@@ -1,11 +1,12 @@
 <?php
-require_once __DIR__ . '/../../src/repository/ImagenesRepository.php';
-require_once __DIR__ . '/../../src/utils/File.class.php';
-require_once __DIR__ . '/../../src/repository/CategoriaRepository.php';
-require_once __DIR__ . '/../../src/exceptions/FileException.php';
-require_once __DIR__ . '/../../src/exceptions/QueryException.php';
-require_once __DIR__ . '/../../src/exceptions/AppException.php';
-require_once __DIR__ . '/../../src/exceptions/CategoriaException.php';
+use dwes\app\exceptions\AppException;
+use dwes\app\repository\ImagenesRepository;
+use dwes\app\utils\File;
+use dwes\app\exceptions\FileException;
+use dwes\app\exceptions\QueryException;
+use dwes\app\exceptions\CategoriaException;
+use dwes\core\App;
+use dwes\app\entity\Imagen;
 try {
   $conexion = App::getConnection();
   $imagenesRepository = new ImagenesRepository();

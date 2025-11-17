@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/IEntity.interface.php';
+namespace dwes\app\entity;
 
+use dwes\app\entity\IEntity;
 class Asociado implements IEntity
 {
 

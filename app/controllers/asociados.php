@@ -1,8 +1,10 @@
 <?php
-require_once __DIR__ . '/../../src/entity/asociado.class.php';
-require_once __DIR__ . '/../../src/utils/File.class.php';
-require_once __DIR__ . '/../../src/database/connection.class.php';
-require_once __DIR__ . '/../../src/repository/AsociadosRepository.php';
+use dwes\app\exceptions\FileException;
+use dwes\app\repository\AsociadosRepository;
+use dwes\app\entity\Asociado;
+use dwes\core\App;
+use dwes\app\utils\File;
+
 
 $nombre = '';
 $descripcion = '';

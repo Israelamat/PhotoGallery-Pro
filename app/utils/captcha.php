@@ -4,7 +4,7 @@ session_start();
 $captcha = "";
 $totalCharacteres = rand(5, 8); // Longitud máxima del captcha
 $possiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-$captchaFont = "Audiowide-Regular.ttf";
+$captchaFont = __DIR__ . '/Audiowide-Regular.ttf';
 $captchaFontSize = rand(10, 40); // Tamaño de la fuente
 $caracter = 0;
 while ($caracter < $totalCharacteres) {

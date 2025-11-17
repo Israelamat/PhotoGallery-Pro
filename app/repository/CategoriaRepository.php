@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . '/../database/queryBuilder.class.php';
+
+namespace dwes\app\repository;
+
+use dwes\core\database\QueryBuilder;
+use dwes\app\entity\Categoria;
 
 class CategoriaRepository extends QueryBuilder
 {
@@ -9,7 +13,8 @@ class CategoriaRepository extends QueryBuilder
    */
   public function __construct(string $table = 'categoria', string $classEntity = 'Categoria')
   {
-    parent::__construct($table, $classEntity);
+    // Pasamos el namespace completo de la clase Categoria
+    parent::__construct('categoria', Categoria::class);
   }
   public function nuevaImagen(Categoria $categoria)
   {

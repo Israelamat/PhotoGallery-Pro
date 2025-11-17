@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/IEntity.interface.php';
-class imagen implements IEntity{
+namespace dwes\app\entity;
+use dwes\app\entity\IEntity;
+class Imagen implements IEntity{
 
     const RUTA_IMAGENES_PORTFOLIO = '/public/images/index/portfolio/';
     const RUTA_IMAGENES_GALERIA   = '/public/images/index/gallery/';

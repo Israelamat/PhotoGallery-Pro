@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/../../src/entity/imagen.class.php';
-require_once __DIR__ . '/../../src/entity/asociado.class.php';
-require_once __DIR__ . '/../../src/utils/utils.class.php';
+
+use dwes\app\entity\Imagen;
+use dwes\app\entity\Asociado;
+use dwes\app\utils\Utils;
 
 $imagenesHome[] = new Imagen('1.jpg', 'Descripción imagen 1', 1, 456, 610, 130);
 $imagenesHome[] = new Imagen('2.jpg', 'Descripción imagen 2', 1, 420, 580, 120);
@@ -20,7 +21,7 @@ $logoHome[] = new Asociado('Firts Partner Name', 'log1.jpg', 'Bonito logo');
 $logoHome[] = new Asociado('Second PartnerName', 'log2.jpg', 'Bonito logo');
 $logoHome[] = new Asociado('Third Partner Name', 'log3.jpg', 'Bonito logo');
 
-$logoHome = utils::extraeElementosAleatorios($logoHome, 4);
+$logoHome = Utils::extraeElementosAleatorios($logoHome, 4);
 
 require_once __DIR__ . '/../views/index.view.php';
 

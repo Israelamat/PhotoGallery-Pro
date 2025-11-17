@@ -42,6 +42,10 @@
     <div class="tab-content">
 
       <?php
+      //Evitar warings 
+     $imagenesHome = $imagenesHome ?? [];
+     $logoHome = $logoHome ?? [];
+
       // Primera categoría
       $idCategoria = 1;
       shuffle($imagenesHome);

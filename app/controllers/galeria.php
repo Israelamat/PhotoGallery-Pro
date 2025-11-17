@@ -1,16 +1,12 @@
 <?php
-require_once __DIR__ . '/../../src/exceptions/FileException.php';
-require_once __DIR__ . '/../../src/utils/File.class.php';
-require_once __DIR__ . '/../../src/entity/imagen.class.php';
-require_once __DIR__ . '/../../src/entity/categoria.class.php';
-require_once __DIR__ . '/../../src/database/Connection.class.php';
-require_once __DIR__ . '/../../src/exceptions/QueryException.php';
-require_once __DIR__ . '/../../src/exceptions/AppException.php';
-require_once __DIR__ . '/../../src/exceptions/CategoriaException.php';
-require_once __DIR__ . '/../../src/repository/ImagenesRepository.php';
-require_once __DIR__ . '/../../src/repository/CategoriaRepository.php';
+use dwes\app\exceptions\AppException;
+use dwes\app\repository\ImagenesRepository;
+use dwes\app\repository\CategoriaRepository;
+use dwes\core\App;
+use dwes\core\database\Connection;
+use dwes\core\bootstrap;
+use dwes\app\exceptions\QueryException;
 
-require_once __DIR__ . '/../../core/bootstrap.php';
 $errores = [];
 $titulo = "";
 $descripcion = "";

@@ -68,7 +68,7 @@
 
             <!-- CAPTCAHA -->
             <label class="label-control">Introduce el captcha <img style="border: 1px solid #D3D0D0 "
-                src="../../src/utils/captcha.php" id='captcha'></label>
+                src="/app/utils/captcha.php" id='captcha'></label>
             <input class="form-control" type="text" name="captcha">
 
             <button class="pull-right btn btn-lg sr-button">ENVIAR</button>

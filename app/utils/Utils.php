@@ -1,4 +1,6 @@
 <?php
+namespace dwes\app\utils;
+
 class utils
 {
     public static function esOpcionMenuActiva($opcion): bool

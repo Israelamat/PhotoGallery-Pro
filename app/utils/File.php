@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/../exceptions/FileException.php';
+namespace dwes\app\utils;
+
+use dwes\app\exceptions\FileException;
 class File
 {
     private $file; // Contenido del fichero que se sube al servidor
