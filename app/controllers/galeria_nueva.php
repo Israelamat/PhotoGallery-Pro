@@ -9,7 +9,7 @@ use dwes\core\App;
 use dwes\app\entity\Imagen;
 try {
   $conexion = App::getConnection();
-  $imagenesRepository = new ImagenesRepository();
+  $imagenesRepository = App::getRepository(ImagenesRepository::class);
   $titulo = trim(htmlspecialchars($_POST['titulo']));
   $descripcion = trim(htmlspecialchars($_POST['descripcion']));
   $tiposAceptados = ['image/jpeg', 'image/gif', 'image/png'];
@@ -20,6 +20,7 @@ try {
     throw new CategoriaException;
   $imagen->saveUploadFile(Imagen::RUTA_IMAGENES_SUBIDAS);
   $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, $categoria);
+  /** @var ImagenesRepository $imagenesRepository */ //En tiempo de ejecucion funcioan, evitar error "undefined"
   $imagenesRepository->guarda($imagenGaleria);
   App::get('logger')->add("Se ha guardado una imagen: " . $imagenGaleria->getNombre());
   $mensaje = "Se ha guardado la imagen correctamente";

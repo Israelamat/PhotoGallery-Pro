@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $conexion = App::getConnection();
                 $asociado = new Asociado($nombre, $imagen->getFileName(), $descripcion);
 
-                $asociadosRepository = new AsociadosRepository();
+                $asociadosRepository = App::getRepository(AsociadosRepository::class);
                 $asociadosRepository->save($asociado);
                 $mensaje = "Se ha guardado el asociado correctamente.";
 

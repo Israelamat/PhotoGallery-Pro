@@ -3,8 +3,6 @@ use dwes\app\exceptions\AppException;
 use dwes\app\repository\ImagenesRepository;
 use dwes\app\repository\CategoriaRepository;
 use dwes\core\App;
-use dwes\core\database\Connection;
-use dwes\core\bootstrap;
 use dwes\app\exceptions\QueryException;
 
 $errores = [];
@@ -13,8 +11,8 @@ $descripcion = "";
 $mensaje = "";
 try {
   $conexion = App::getConnection();
-  $imagenesRepository = new ImagenesRepository();
-  $categoriasRepository = new CategoriaRepository();
+  $imagenesRepository = App::getRepository(ImagenesRepository::class);
+  $categoriasRepository = App::getRepository(CategoriaRepository::class);
   $imagenes = $imagenesRepository->findAll();
   $categorias = $categoriasRepository->findAll();
 
