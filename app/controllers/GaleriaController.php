@@ -15,7 +15,7 @@ use dwes\core\Response;
 
 class GaleriaController
 {
-  
+
   public function index()
   {
     $imagenes = App::getRepository(ImagenesRepository::class)->findAll();
@@ -81,6 +81,16 @@ class GaleriaController
       'galeria',
       'layout',
       compact('imagenes', 'categorias', 'titulo', 'descripcion', 'errores', 'mensaje') // pasamos errores y mensaje si existen
+    );
+  }
+  public function show($id)
+  {
+    $imagenesRepository = App::getRepository(ImagenesRepository::class);
+    $imagen = $imagenesRepository->find($id);
+    Response::renderView(
+      'imagen-show',
+      'layout',
+      compact('imagen', 'imagenesRepository')
     );
   }
 }

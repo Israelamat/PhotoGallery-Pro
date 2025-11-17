@@ -8,6 +8,7 @@ $router->get('post', 'PagesController@post');
 // Galería
 $router->get('galeria', 'GaleriaController@index');
 $router->post('galeria/nueva', 'GaleriaController@nueva');
+$router->get ('galeria/:id', 'GaleriaController@show');
 
 // Asociados
 $router->get('asociados', 'AsociadosController@index');
