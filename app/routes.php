@@ -16,3 +16,8 @@ $router->post('asociados/nuevo', 'AsociadosController@nueva');
 
 // Contacto
 $router->get('contact', 'ContactoController@index');
+
+// User
+$router->get ('login', 'AuthController@login');
+$router->post('check-login', 'AuthController@checkLogin');
+$router->get ('logout', 'AuthController@logout');

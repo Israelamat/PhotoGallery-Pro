@@ -40,6 +40,7 @@ class Router
   public function redirect(string $path)
   {
     header('location: /' . $path);
+    exit();
   }
   private function prepareRoute(string $route): string
   {

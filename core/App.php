@@ -5,6 +5,7 @@ namespace dwes\core;
 use dwes\core\database\Connection;
 use dwes\app\exceptions\AppException;
 use dwes\core\database\QueryBuilder;
+use dwes\app\repository\UserRepository;
 
 class App
 {

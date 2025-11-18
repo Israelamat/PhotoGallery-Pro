@@ -24,20 +24,7 @@
       <h2>Subir imágenes:</h2>
       <hr>
       <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
-      <?php if (!empty($mensaje) || !empty($errores)) : ?>
-        <div class="alert alert-<?= empty($errores) ? 'info' : 'danger' ?>">
-          <?php if (!empty($mensaje)) : ?>
-            <p><?= $mensaje ?></p>
-          <?php endif; ?>
-          <?php if (!empty($errores)) : ?>
-            <ul>
-              <?php foreach ($errores as $error) : ?>
-                <li><?= $error ?></li>
-              <?php endforeach; ?>
-            </ul>
-          <?php endif; ?>
-        </div>
-      <?php endif; ?>
+       <?php include __DIR__ . '/show-error.part.view.php'; ?>
 
       <!-- Formulario que permite subir una imagen con su descripción -->
       <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->

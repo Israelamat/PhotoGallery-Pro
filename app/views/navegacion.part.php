@@ -1,4 +1,5 @@
 <?php
+
 use dwes\app\utils\Utils;
 ?>
 <nav class="navbar navbar-fixed-top navbar-default">
@@ -28,12 +29,21 @@ use dwes\app\utils\Utils;
         <li class="<?php echo utils::esOpcionMenuActiva('/contact.php') ? 'active lien' : 'lien'; ?>">
           <a href="/contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
         </li>
-        <li class="<?php echo utils::esOpcionMenuActiva('/galeria.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/galeria"><i class="fa fa-file-text sr-icons"></i> Galeria</a>
-        </li>
-        <li class="<?php echo utils::esOpcionMenuActiva('/asociados.php') ? 'active lien' : 'lien'; ?>">
-          <a href="/asociados"><i class="fa fa-bookmark sr-icons"></i> Asociados</a>
-        </li>
+        <?php if (is_null($app['user'])) : ?>
+          <?php if (Utils::esOpcionMenuActiva('/login') == true) echo '<li class="active lien">';
+          else echo '<li class=" lien">'; ?>
+          <a href="/login"><i class="fa fa-user-secret sr-icons"></i> Login</a></li>
+        <?php else : ?>
+          <li class="<?php echo utils::esOpcionMenuActiva('/galeria.php') ? 'active lien' : 'lien'; ?>">
+            <a href="/galeria"><i class="fa fa-file-text sr-icons"></i> Galeria</a>
+          </li>
+          <li class="<?php echo utils::esOpcionMenuActiva('/asociados.php') ? 'active lien' : 'lien'; ?>">
+            <a href="/asociados"><i class="fa fa-bookmark sr-icons"></i> Asociados</a>
+          </li>
+          <?php if (Utils::esOpcionMenuActiva('/logout') == true) echo '<li class="active lien">';
+          else echo '<li class=" lien">'; ?>
+          <a href="/logout"><i class="fa fa-sign-out sr-icons"></i> <?= $app['user']->getUsername() ?></a></li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>
