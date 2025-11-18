@@ -5,6 +5,7 @@ use dwes\core\Router;
 use dwes\core\App;
 use dwes\app\utils\MyLog;
 
+session_start();
 $config = require_once __DIR__ . '/../app/config.php';
 App::bind('config', $config);
 $router = Router::load(__DIR__ . '/../app/' . $config['routes']['filename']);

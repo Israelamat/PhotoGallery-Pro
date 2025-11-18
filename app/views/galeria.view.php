@@ -24,14 +24,12 @@
       <h2>Subir imágenes:</h2>
       <hr>
       <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
-      <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-        <div class="alert alert-<?= empty($errores) ? 'info' : 'danger'; ?> alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">x</span>
-          </button>
-          <?php if (empty($errores)) : ?>
+      <?php if (!empty($mensaje) || !empty($errores)) : ?>
+        <div class="alert alert-<?= empty($errores) ? 'info' : 'danger' ?>">
+          <?php if (!empty($mensaje)) : ?>
             <p><?= $mensaje ?></p>
-          <?php else : ?>
+          <?php endif; ?>
+          <?php if (!empty($errores)) : ?>
             <ul>
               <?php foreach ($errores as $error) : ?>
                 <li><?= $error ?></li>
@@ -40,9 +38,10 @@
           <?php endif; ?>
         </div>
       <?php endif; ?>
+
       <!-- Formulario que permite subir una imagen con su descripción -->
       <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
-      <form clas="form-horizontal" action="/galeria/nueva" method="post" enctype="multipart/form-data">
+      <form class="form-horizontal" action="/galeria/nueva" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <div class="col-xs-12">
             <label class="label-control">Imagen</label>
@@ -53,8 +52,13 @@
           <div class="col-xs-12">
             <label class="label-control">Categoria</label>
             <select class="form-control" name="categoria">
-              <?php foreach ($categorias as $categoria) : ?>
-                <option value="<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></option>
+              <?php $categoriaSeleccionada = '';
+              foreach ($categorias as $categoria) : ?>
+                <option
+                  value="<?= $categoria->getId() ?>"
+                  <?= ($categoriaSeleccionada == $categoria->getId()) ? 'selected' : '' ?>>
+                  <?= $categoria->getNombre() ?>
+                </option>
               <?php endforeach; ?>
             </select>
           </div>
