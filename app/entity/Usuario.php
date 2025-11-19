@@ -1,7 +1,5 @@
 <?php
-
 namespace dwes\app\entity;
-
 use dwes\app\entity\IEntity;
 
 class Usuario implements IEntity

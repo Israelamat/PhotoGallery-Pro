@@ -46,6 +46,12 @@ use dwes\app\utils\Utils;
           <a href="/logout"><i class="fa fa-sign-out sr-icons"></i> <?= $app['user']->getUsername() ?></a></li>
         <?php endif; ?>
 
+        <!-- Registros -->
+        <li class="<?= Utils::esOpcionMenuActiva('/registro') ? 'active' : '' ?> lien">
+        <a href="<?= Utils::esOpcionMenuActiva('/registro') ? '#' : '/registro' ?>">
+          <i class="fa fa-sign-in sr-icons"></i> Registro</a></li>
+
+
       </ul>
     </div>
   </div>
