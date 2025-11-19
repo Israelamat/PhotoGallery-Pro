@@ -1,9 +1,12 @@
 <?php
+
 namespace dwes\core;
+
 class Response
 {
   public static function renderView(string $name, string $layout = 'layout', array $data = [])
   {
+    $app = [];
     // Creamos variables con el contenido del array
     extract($data); // El nombre de las variables serán las claves del array
     $app['user'] = App::get('appUser');

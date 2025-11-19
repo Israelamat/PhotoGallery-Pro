@@ -6,9 +6,9 @@ $router->get('blog', 'PagesController@blog');
 $router->get('post', 'PagesController@post');
 
 // Galería
-$router->get('galeria', 'GaleriaController@index');
-$router->post('galeria/nueva', 'GaleriaController@nueva');
-$router->get ('galeria/:id', 'GaleriaController@show');
+$router->get('galeria', 'GaleriaController@index', 'ROLE_USER');
+$router->post('galeria/nueva', 'GaleriaController@nueva', 'ROLE_ADMIN');
+$router->get ('galeria/:id', 'GaleriaController@show', 'ROLE_USER');
 
 // Asociados
 $router->get('asociados', 'AsociadosController@index');

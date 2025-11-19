@@ -29,6 +29,7 @@ use dwes\app\utils\Utils;
         <li class="<?php echo utils::esOpcionMenuActiva('/contact.php') ? 'active lien' : 'lien'; ?>">
           <a href="/contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
         </li>
+        <!-- Condicion si el usuario esta logueado -->
         <?php if (is_null($app['user'])) : ?>
           <?php if (Utils::esOpcionMenuActiva('/login') == true) echo '<li class="active lien">';
           else echo '<li class=" lien">'; ?>
@@ -44,6 +45,7 @@ use dwes\app\utils\Utils;
           else echo '<li class=" lien">'; ?>
           <a href="/logout"><i class="fa fa-sign-out sr-icons"></i> <?= $app['user']->getUsername() ?></a></li>
         <?php endif; ?>
+
       </ul>
     </div>
   </div>

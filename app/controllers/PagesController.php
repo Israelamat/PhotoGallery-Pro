@@ -26,18 +26,33 @@ class PagesController
   }
   public function about()
   {
-    $imagenesClientes[] = new Imagen('client1.jpg', 'MISS BELLA');
-    $imagenesClientes[] = new Imagen('client2.jpg', 'DON PENO');
-    $imagenesClientes[] = new Imagen('client3.jpg', 'SWEETY');
-    $imagenesClientes[] = new Imagen('client4.jpg', 'LADY');
-    require __DIR__ . '/../views/about.view.php';
+    $imagenesClientes = [
+      new Imagen('client1.jpg', 'MISS BELLA'),
+      new Imagen('client2.jpg', 'DON PENO'),
+      new Imagen('client3.jpg', 'SWEETY'),
+      new Imagen('client4.jpg', 'LADY'),
+    ];
+
+    Response::renderView(
+      'about',   
+      'layout',  
+      compact('imagenesClientes')
+    );
   }
+
   public function blog()
   {
-    require __DIR__ . '/../views/blog.view.php';
+    Response::renderView(
+      'blog',    
+      'layout'
+    );
   }
+
   public function post()
   {
-    require __DIR__ . '/../views/single_post.view.php';
+    Response::renderView(
+      'single_post',  
+      'layout'
+    );
   }
 }
