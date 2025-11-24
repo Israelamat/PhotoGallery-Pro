@@ -38,6 +38,11 @@ class Imagen implements IEntity{
     private $numDownloads;
 
     /**
+     * @var int
+     */
+    private $idUsuario;
+
+    /**
      * @params string $nombre, string $descripcion, string $categoria, int $numVisualizaciones, int $numLikes, int $numDownloads
      * @return Imagen
      */
@@ -47,7 +52,8 @@ class Imagen implements IEntity{
         int $categoria = 1,
         int $numVisualizaciones = 0,
         int $numLikes = 0,
-        int $numDownloads = 0
+        int $numDownloads = 0,
+        int $idUsuario = 0
     ){
         $this->id = null;
         $this->nombre = $nombre;
@@ -56,6 +62,7 @@ class Imagen implements IEntity{
         $this->numVisualizaciones = $numVisualizaciones;
         $this->numLikes = $numLikes;
         $this->numDownloads = $numDownloads;
+        $this->idUsuario = $idUsuario;
     }
 
     // -------------------- GETTERS --------------------
@@ -66,6 +73,7 @@ class Imagen implements IEntity{
     public function getNumVisualizaciones(): int { return $this->numVisualizaciones; }
     public function getNumLikes(): int { return $this->numLikes; }
     public function getNumDownloads(): int { return $this->numDownloads; }
+    public function getIdUsuario(): int { return $this->idUsuario; }
 
     // -------------------- SETTERS --------------------
     /**
@@ -122,6 +130,15 @@ class Imagen implements IEntity{
         return $this;
     }
 
+    /**
+     * @param int $idUsuario
+     * @return Imagen
+     */
+    public function setIdUsuario(int $idUsuario): Imagen {
+        $this->idUsuario = $idUsuario;
+        return $this;
+    }
+
     // -------------------- toString --------------------
     /**
      * @return string
@@ -164,14 +181,18 @@ class Imagen implements IEntity{
      * @return array
      */
     public function toArray(): array{
+        if (!is_null($this->getId())) {
+        $data['id'] = $this->getId();
+    }
         return [
-        //'id' => $this->getId(), // en el anterior insert no se le pasa el ID y si se le pasa ahora la BD recibe un null 
+        'id' => $this->getId(), // en el anterior insert no se le pasa el id y si se le pasa ahora la BD recibe un null 
         'nombre' => $this->getNombre(),
         'descripcion' => $this->getDescripcion(),
         'numVisualizaciones' => $this->getNumVisualizaciones(),
         'numLikes' => $this->getNumLikes(),
         'numDownloads' => $this->getNumDownloads(),
-        'categoria' => $this->getCategoria()
+        'categoria' => $this->getCategoria(),
+        'idUsuario' => $this->getIdUsuario()
         ];
     }
 }

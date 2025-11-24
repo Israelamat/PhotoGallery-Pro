@@ -162,4 +162,15 @@ abstract class QueryBuilder
       return $result[0];
     return null;
   }
+  public function findByUsuario(int $idUsuario): array
+  {
+    return $this->findBy(['idUsuario' => $idUsuario]);
+  }
+
+  public function borrar(int $id): bool
+  {
+    $sql = "DELETE FROM {$this->table} WHERE id = :id";
+    $stmt = $this->connection->prepare($sql);
+    return $stmt->execute(['id' => $id]);
+  }
 }

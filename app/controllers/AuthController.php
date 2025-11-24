@@ -33,11 +33,15 @@ class AuthController
         'username' => $_POST['username']
       ]);
 
+      /** @var Usuario $usuario */ //Evitar error del linter (Aqui no es necesario)
       if ($usuario !== null && Security::checkPassword($_POST['password'], $usuario->getPassword())) {
+
         $_SESSION['loguedUser'] = $usuario->getId();
+        App::bind('user', $usuario);   // <-- aquí registramos el usuario en el contenedor
         FlashMessage::unset('username');
         App::get('router')->redirect('');
       }
+
 
       throw new ValidationException('El usuario y el password introducidos no existen');
     } catch (ValidationException $validationException) {

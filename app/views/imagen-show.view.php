@@ -5,7 +5,7 @@
       <h1>IMAGEN GALERIA</h1>
       <hr>
       <div class="imagenes_galeria">
-        <img src="<?= $imagen->getUrlImagenesSubidas() ?>" alt="<?= $imagen->getDescripcion() ?>"
+        <img src="<?= $imagen->getUrlImagenes() ?>" alt="<?= $imagen->getDescripcion() ?>"
           title="<?= $imagen->getDescripcion() ?>" width="500px">
         <br>Descripción: <?= $imagen->getDescripcion() ?>
         <br>Categoria:<?= $imagenesRepository->getCategoria($imagen)->getNombre() ?>

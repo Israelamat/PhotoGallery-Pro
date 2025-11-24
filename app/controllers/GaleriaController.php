@@ -19,7 +19,11 @@ class GaleriaController
 
   public function index()
   {
-    $imagenes = App::getRepository(ImagenesRepository::class)->findAll();
+    $userId = $_SESSION['loguedUser'] ?? null;
+    if (!$userId) {
+      App::get('router')->redirect('/login');
+    }
+    $imagenes = App::getRepository(ImagenesRepository::class)->findByUsuario($userId);
     $categorias = App::getRepository(CategoriaRepository::class)->findAll();
 
     $errores = FlashMessage::get('errores', []);
@@ -27,7 +31,6 @@ class GaleriaController
     $titulo = FlashMessage::get('titulo');
     $descripcion = FlashMessage::get('descripcion');
     $categoriaSeleccionada = FlashMessage::get('categoriaSeleccionada');
-
 
     Response::renderView(
       'galeria',  // galeria.view.php
@@ -72,7 +75,7 @@ class GaleriaController
       FlashMessage::set('categoriaSeleccionada', $categoria);
 
       $imagen->saveUploadFile(Imagen::RUTA_IMAGENES_SUBIDAS);
-      $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, $categoria);
+      $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, $categoria, 0, 0, 0, $_SESSION['loguedUser'] ?? 0);
       $imagenesRepository->guarda($imagenGaleria);
 
       App::get('logger')->add("Se ha guardado una imagen: " . $imagenGaleria->getNombre());
@@ -96,7 +99,7 @@ class GaleriaController
     $mensaje = FlashMessage::get('mensaje');
 
     // Después de guardar o si hay errores, renderizamos la galería otra vez
-    $imagenes = App::getRepository(ImagenesRepository::class)->findAll();
+    $imagenes = App::getRepository(ImagenesRepository::class)->findByUsuario($_SESSION['loguedUser'] ?? 0);
     Response::renderView(
       'galeria',
       'layout',
@@ -112,5 +115,56 @@ class GaleriaController
       'layout',
       compact('imagen', 'imagenesRepository')
     );
+  }
+
+  public function editar($id)
+  {
+
+    $repo = new ImagenesRepository();
+    $imagen = $repo->find($id);
+
+    if (!$imagen) {
+      die("Imagen no encontrada.");
+    }
+
+    // Variables para el formulario
+    /** @var Imagen $imagen */
+    $titulo = $imagen->getNombre();
+    $descripcion = $imagen->getDescripcion();
+    $categoria = $imagen->getCategoria();
+
+    Response::renderView(
+      'imagen-edit',
+      'layout',
+      compact('imagen', 'titulo', 'descripcion', 'categoria')
+    );
+  }
+
+  public function actualizar($id)
+  {
+    $repo = new ImagenesRepository();
+    $imagen = $repo->find($id);
+
+    if (!$imagen) {
+      die("Imagen no encontrada.");
+    }
+
+    /** @var Imagen $imagen */
+    // Actualizamos los campos
+    $imagen->setNombre($_POST['titulo']);
+    $imagen->setDescripcion($_POST['descripcion']);
+    $imagen->setCategoria((int) $_POST['categoria']);
+
+    $repo->update($imagen);
+    App::get('router')->redirect('galeria');
+  }
+
+  public function borrar($id)
+  {
+    $repo = new ImagenesRepository();
+    $repo->borrar($id);
+    
+    App::get('router')->redirect('galeria');
+
   }
 }

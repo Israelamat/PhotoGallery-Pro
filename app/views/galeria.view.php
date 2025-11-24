@@ -1,8 +1,3 @@
-<?php require_once __DIR__ . '/inicio.part.php'; ?>
-
-<!-- Navigation Bar -->
-<?php require_once __DIR__ . '/navegacion.part.php'; ?>
-
 <!-- End of Navigation Bar -->
 
 <div class="hero hero-inner">
@@ -24,7 +19,7 @@
       <h2>Subir imágenes:</h2>
       <hr>
       <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
-       <?php include __DIR__ . '/show-error.part.view.php'; ?>
+      <?php include __DIR__ . '/show-error.part.view.php'; ?>
 
       <!-- Formulario que permite subir una imagen con su descripción -->
       <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
@@ -82,7 +77,9 @@
           <tbody>
             <?php foreach ($imagenes as $imagen) : ?>
               <tr>
-                <th scope="row"><?= $imagen->getNombre() ?></th>
+                <th scope="row"><a href='/galeria/<?= $imagen->getId() ?>'>
+                    <?= $imagen->getNombre() ?></a>
+                </th>
                 <td>
                   <img src="<?= $imagen->getUrlImagenes() ?>"
                     alt="<?= $imagen->getDescripcion() ?>"
@@ -93,6 +90,16 @@
                 <td><?= $imagen->getNumLikes() ?></td>
                 <td><?= $imagen->getNumDownloads() ?></td>
                 <td><?= $imagen->getCategoria() ?></td>
+                <td>
+                  <a href="/galeria/editar/<?= $imagen->getId() ?>"
+                    class="btn btn-warning btn-sm">Editar</a>
+
+                  <a href="/galeria/borrar/<?= $imagen->getId() ?>"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('¿Seguro que quieres eliminar esta imagen?');">
+                    Borrar
+                  </a>
+                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -101,6 +108,3 @@
     </div>
   </div>
 </div>
-
-<!-- footer -->
-<?php require_once __DIR__ . '/fin.part.php'; ?>
