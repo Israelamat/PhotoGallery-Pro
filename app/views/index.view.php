@@ -85,6 +85,3 @@
       <!-- End of Box within partners name and logo -->
 
     </div><!-- End of index box -->
-
-    <!-- Footer -->
-    <?php require_once __DIR__ . '/fin.part.php'; ?>

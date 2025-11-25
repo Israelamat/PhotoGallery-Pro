@@ -29,4 +29,8 @@ class ExposicionRepository extends QueryBuilder
   {
     return $this->update($expo);
   }
+  public function exposicionesActivas()
+  {
+    return $this->findBy(['activa' => 1]);
+  }
 }

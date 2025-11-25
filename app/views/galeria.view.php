@@ -100,6 +100,7 @@
                     Borrar
                   </a>
                 </td>
+                <td><a href="/exposicion/anadirimagen/<?= $imagen->getId() ?>">Añadir a exposición</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

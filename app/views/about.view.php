@@ -1,10 +1,3 @@
-<?php require_once __DIR__ . '/inicio.part.php';?>
-
-<!-- Navigation Bar -->
-<?php require_once __DIR__ . '/navegacion.part.php';?>
-
-<!-- End of Navigation Bar -->
-
 <!-- Principal Content Start-->
    <div id="about">
 
@@ -128,5 +121,3 @@
    </div>
 <!-- End of principal content -->
 
-   <!-- Footer -->
-  <?php require_once __DIR__ . '/fin.part.php';?>

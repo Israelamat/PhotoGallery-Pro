@@ -25,10 +25,12 @@ $router->get('contact', 'ContactoController@index');
 $router->get ('login', 'AuthController@login');
 $router->post('check-login', 'AuthController@checkLogin');
 $router->get ('logout', 'AuthController@logout');
-$router->get ('registro', 'AuthController@registro');
+$router->get ('registro', 'AuthController@registro');   
 $router->post('check-registro', 'AuthController@checkRegistro');
 
 //exposiciones 
 $router->get ('exposiciones', 'ExposicionesController@index', 'ROLE_USER');
 $router->get('exposiciones/nueva', 'ExposicionesController@nueva', 'ROLE_ADMIN');
 $router->post('exposiciones/guardar', 'ExposicionesController@guardar', 'ROLE_ADMIN');
+$router->get('exposicion/anadirimagen/:id', 'ExposicionesController@anadirImagen', 'ROLE_ADMIN');
+$router->post('exposicion/guardarImagen', 'ExposicionesController@guardarImagen', 'ROLE_ADMIN');

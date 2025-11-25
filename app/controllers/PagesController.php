@@ -17,7 +17,6 @@ class PagesController
   {
     $imagenGaleria = App::getRepository(ImagenesRepository::class)->findAll();
     $asociadosLista = App::getRepository(AsociadosRepository::class)->findAll();
-    // Renderizamos la vista usando Response
     Response::renderView(
       'index',      // Nombre de la vista
       'layout',     // Layout común
