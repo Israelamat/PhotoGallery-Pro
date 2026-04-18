@@ -1,16 +1,16 @@
-# 📸 PhotoGallery Pro – Clean Architecture PHP Solution
+# 📸 PhotoGallery Pro – Enterprise PHP Architecture
 
-**PhotoGallery Pro** is a high-performance image management ecosystem built with **Pure PHP**. Unlike standard basic projects, this gallery implements the **Repository Pattern**, abstracting data access to ensure a scalable, maintainable, and professional codebase without the need for heavy frameworks.
+**PhotoGallery Pro** is a high-performance image management ecosystem engineered with **Pure PHP**. Moving beyond basic scripting, this platform implements the **Repository Pattern** to decouple data access from business logic, ensuring a scalable, maintainable, and industry-standard codebase without the overhead of heavy frameworks.
 
 ---
 
-## 🏗️ The Repository Pattern Architecture
+## 🏗️ Architecture: The Repository Pattern
 
-To avoid "Spaghetti Code," this project separates **Database Logic** from the **User Interface**. This architecture allows for cleaner code, easier debugging, and professional-grade organization.
+To eliminate "Spaghetti Code," this project enforces a strict separation between the **Database Layer** and the **User Interface**. This architectural choice provides professional-grade organization:
 
-* **Entities:** Data objects representing the Image and User models.
-* **Repositories:** Dedicated classes that house all **SQL/PDO queries**. The rest of the app doesn't know *how* the data is fetched, it only consumes it.
-* **Controller Layer:** Handles user requests and coordinates between the View and the Repository layers.
+* **Entities:** Domain models representing the core data structures (e.g., Image, User).
+* **Repositories:** Dedicated abstraction classes containing all **SQL/PDO logic**. The application consumes data without needing to know the underlying query complexity.
+* **Controller Layer:** Orchestrates user requests and bridges the communication between Views and Repositories.
 
 ---
 
@@ -18,31 +18,31 @@ To avoid "Spaghetti Code," this project separates **Database Logic** from the **
 
 * **Backend:** PHP 8.x (Pure / Vanilla)
 * **Database:** MySQL / MariaDB (Managed via **phpMyAdmin**)
-* **Server Stack:** XAMPP / Apache
-* **Architecture:** **Repository Pattern** & Singleton DB Wrapper
-* **Security:** Full **PDO Integration** with Prepared Statements to neutralize SQL Injection.
+* **Infrastructure:** XAMPP / Apache Stack
+* **Design Patterns:** **Repository Pattern** & Singleton DB Wrapper
+* **Security:** Full **PDO Integration** with Prepared Statements to neutralize SQL Injection vulnerabilities.
 
 ---
 
-## 🚀 Key Technical Features
+## 🚀 Key Engineering Highlights
 
-### 🖼️ Intelligent Asset Management
-High-speed rendering of image galleries with dynamic metadata retrieval through the abstraction layer.
+### 🖼️ Intelligent Asset Orchestration
+High-speed gallery rendering with dynamic metadata retrieval. The system is optimized for low-latency image loading through a structured abstraction layer.
 
-### 🔐 Secure Data Access
-Zero use of outdated `mysqli_query`. All database interactions are handled via **PDO**, ensuring enterprise-grade security for user data and file uploads.
+### 🔐 Enterprise-Grade Data Security
+Complete transition away from legacy `mysqli` functions. All database interactions utilize **PDO**, providing a secure, robust environment for handling sensitive user data and media assets.
 
-### 📱 Fully Responsive UI
-A sleek, modern frontend built with **HTML5** and **CSS3 Flexbox/Grid**, optimized for mobile, tablet, and desktop viewing.
+### 📱 Responsive "Mobile-First" UI
+A sleek, modern interface built with **HTML5** and **CSS3 (Flexbox/Grid)**, delivering a seamless experience across mobile, tablet, and ultra-wide desktop displays.
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Anatomy
 
 ```text
 /src
- ├── Core/          # Database Connection (Singleton Pattern)
- ├── Repositories/  # The Abstraction Layer (SQL Logic & Queries)
- ├── Entities/      # Data Models (Class structures)
- ├── Public/        # Entry point (index.php) and Assets
- └── Views/         # UI Templates & Rendered Pages
+ ├── Core/          # Database Lifecycle (Singleton Pattern)
+ ├── Repositories/  # Abstraction Layer (SQL & Data Logic)
+ ├── Entities/      # Data Models (Class Blueprints)
+ ├── Public/        # Gateway (index.php) & Static Assets
+ └── Views/         # UI Templates & Server-Side Rendering
